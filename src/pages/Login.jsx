@@ -67,20 +67,7 @@ function Login() {
           </p>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-6">
-            <div>
-              <div className="text-3xl font-bold text-white mb-1">10K+</div>
-              <div className="text-indigo-200 text-sm">Students</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-white mb-1">50+</div>
-              <div className="text-indigo-200 text-sm">Courses</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-white mb-1">95%</div>
-              <div className="text-indigo-200 text-sm">Success</div>
-            </div>
-          </div>
+          
         </div>
       </div>
 

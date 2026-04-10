@@ -5,7 +5,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase/config";
 
-function ResourceGroup({ label, colorClass, icon, items, onAdd, onDelete, addLabel }) {
+function ResourceGroup({ label, colorClass, icon, items, onAdd, onDelete, addLabel, groupKey }) {
   const [titleInput, setTitleInput] = useState("");
   const [urlInput, setUrlInput] = useState("");
   const [adding, setAdding] = useState(false);
@@ -14,7 +14,29 @@ function ResourceGroup({ label, colorClass, icon, items, onAdd, onDelete, addLab
   const handleAdd = async () => {
     if (!titleInput.trim() || !urlInput.trim()) return alert("Title and URL are required");
     setAdding(true);
-    await onAdd({ title: titleInput.trim(), url: urlInput.trim() });
+    
+    let finalTitle = titleInput.trim();
+    let finalUrl = urlInput.trim();
+
+    // Auto-process Google Drive links if applicable
+    if (finalUrl.includes("drive.google.com/file/d/")) {
+      const match = finalUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
+      if (match && match[1]) {
+        const fileId = match[1];
+        if (groupKey === "pdfs") {
+          finalUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+        } else if (groupKey === "visuals") {
+          finalUrl = `https://drive.google.com/uc?id=${fileId}`;
+        }
+      }
+    }
+
+    // Auto-process title (remove extension, replace -/_, capitalize)
+    finalTitle = finalTitle.replace(/\.[a-zA-Z0-9]+$/, ""); // remove extension
+    finalTitle = finalTitle.replace(/[-_]/g, " "); // replace dashes/underscores with space
+    finalTitle = finalTitle.split(" ").filter(Boolean).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+
+    await onAdd({ title: finalTitle, url: finalUrl });
     setTitleInput(""); setUrlInput(""); setShowForm(false);
     setAdding(false);
   };
@@ -245,6 +267,7 @@ export default function AdminResources() {
           {groups.map((g) => (
             <ResourceGroup
               key={g.key}
+              groupKey={g.key}
               label={g.label}
               colorClass={g.colorClass}
               icon={g.icon}

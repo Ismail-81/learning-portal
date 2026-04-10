@@ -57,7 +57,7 @@ export default function Tutorial() {
 
   if (loading) {
     return (
-      <div className="pt-16 min-h-screen flex items-center justify-center bg-white">
+      <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-gray-600">Loading tutorial...</p>
@@ -68,7 +68,7 @@ export default function Tutorial() {
 
   if (error) {
     return (
-      <div className="pt-16 min-h-screen bg-white p-6">
+      <div className="min-h-screen bg-white p-6 py-12">
         <div className="max-w-4xl mx-auto">
           <div className="bg-red-50 border border-red-200 rounded-lg p-6">
             <h2 className="text-lg font-bold text-red-900 mb-2">Error</h2>
@@ -83,7 +83,7 @@ export default function Tutorial() {
   }
 
   return (
-    <div className="pt-11 min-h-screen bg-gradient-to-br from-indigo-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-white">
       <div className="max-w-5xl mx-auto px-6 py-12">
         {/* Back Link */}
         <Link to="/" className="text-indigo-600 hover:text-indigo-800 font-medium mb-6 inline-block">

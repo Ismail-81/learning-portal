@@ -86,7 +86,7 @@ export default function TopicDetails() {
       {/* Left Sidebar */}
       {/* make sidebar sit below the fixed header and add some inner padding so
           content (including dropdowns) isn't obscured by the navbar */}
-      <aside className="hidden md:flex flex-col w-60 border-r border-gray-200 flex-shrink-0 sticky top-16 h-screen overflow-y-auto pt-16">
+      <aside className="hidden md:flex flex-col w-60 border-r border-gray-200 flex-shrink-0 sticky top-0 h-screen overflow-y-auto">
         {/* Back link */}
         <div className="px-4 py-3 border-b border-gray-100">
           <Link
@@ -158,7 +158,7 @@ export default function TopicDetails() {
         ) : section ? (
           <div className="flex-1 flex flex-col">
             {/* Mobile back - pushed below fixed header so it isn't overlapped */}
-            <div className="md:hidden flex items-center gap-3 px-4 py-3 border-b border-gray-100 bg-white sticky top-16 z-10">
+            <div className="md:hidden flex items-center gap-3 px-4 py-3 border-b border-gray-100 bg-white sticky top-0 z-10">
               <Link to={`/tutorial/${tutorialId}`} className="text-gray-400 hover:text-indigo-600">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -167,7 +167,7 @@ export default function TopicDetails() {
               <span className="text-sm font-semibold text-gray-700 truncate">{section.title}</span>
             </div>
 
-            <div className="flex-1 p-6 md:p-10 max-w-3xl">
+            <div className="flex-1 p-6 md:p-10 max-w-5xl">
               {/* Breadcrumb */}
               <div className="flex items-center gap-1.5 text-xs text-gray-400 mb-4">
                 <Link to="/tutorials" className="hover:text-indigo-600">Tutorials</Link>
@@ -224,7 +224,7 @@ export default function TopicDetails() {
               {activeTab === "Theory" && (
                 <div>
                   {section.content ? (
-                    <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-gray-700 leading-relaxed text-sm whitespace-pre-wrap mb-6">
+                    <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 md:p-8 text-gray-800 leading-loose text-base md:text-[1.05rem] whitespace-pre-wrap mb-6 tracking-wide">
                       {section.content}
                     </div>
                   ) : (
@@ -278,7 +278,7 @@ export default function TopicDetails() {
                         </svg>
                         Explanation
                       </h3>
-                      <p className="text-gray-700 text-sm leading-relaxed">{section.exampleExplanation}</p>
+                      <p className="text-gray-800 text-base md:text-[1.05rem] leading-relaxed whitespace-pre-wrap">{section.exampleExplanation}</p>
                     </div>
                   )}
                 </div>

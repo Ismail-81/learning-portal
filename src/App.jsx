@@ -41,7 +41,8 @@ function App() {
   const hideLayout =
     location.pathname === "/login" ||
     location.pathname === "/register" ||
-    location.pathname.startsWith("/admin");
+    location.pathname.startsWith("/admin") ||
+    location.pathname.startsWith("/tutorial/");
 
   const AdminRoute = ({ children }) => (
     <ProtectedRoute user={user}>

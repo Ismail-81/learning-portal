@@ -44,7 +44,7 @@ function Home() {
       {/* Hero Section */}
       {/* full-screen two-column layout: text left, illustration right */}
       <section
-        className="relative bg-gray-50 bg-cover bg-center bg-no-repeat flex items-center justify-center pt-16 h-screen"
+        className="relative bg-gray-50 bg-cover bg-center bg-no-repeat flex items-center justify-center pt-8 h-screen"
         // style={{
         //   // backgroundImage:
         //   //   "linear-gradient(rgba(238,242,255,0.7), rgba(255,255,255,0.85)), url('https://images.unsplash.com/photo-1531973576160-7125cd663d86?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
